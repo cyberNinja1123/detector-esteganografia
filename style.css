@@ -1,6 +1,57 @@
-body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f0f2f5; color: #333; display: flex; justify-content: center; padding: 20px; }
-.container { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 100%; max-width: 600px; }
+Para que los saltos de línea se vean correctamente, solo tienes que añadir una línea a la regla pre de tu CSS.
+
+El elemento <pre> por defecto respeta los saltos de línea, pero si el mensaje es muy largo y no tiene espacios, se saldrá de la caja. Al añadir white-space: pre-wrap;, le dices que respete los saltos de línea originales y que, si una línea es demasiado larga para el ancho de la caja, la baje automáticamente.
+
+Aquí tienes el CSS corregido:
+
+CSS
+
+body { 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    background: #f0f2f5; 
+    color: #333; 
+    display: flex; 
+    justify-content: center; 
+    padding: 20px; 
+}
+
+.container { 
+    background: white; 
+    padding: 30px; 
+    border-radius: 12px; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+    width: 100%; 
+    max-width: 600px; 
+}
+
 h1 { color: #1a73e8; margin-top: 0; }
-.upload-box { border: 2px dashed #1a73e8; padding: 20px; text-align: center; border-radius: 8px; margin-bottom: 20px; }
-canvas { display: none; width: 100%; margin: 10px 0; border-radius: 5px; }
-pre { background: #282c34; color: #61dafb; padding: 15px; border-radius: 5px; overflow-x: auto; font-size: 14px; min-height: 100px; }
+
+.upload-box { 
+    border: 2px dashed #1a73e8; 
+    padding: 20px; 
+    text-align: center; 
+    border-radius: 8px; 
+    margin-bottom: 20px; 
+}
+
+canvas { 
+    display: none; 
+    width: 100%; 
+    margin: 10px 0; 
+    border-radius: 5px; 
+}
+
+pre { 
+    background: #282c34; 
+    color: #61dafb; 
+    padding: 15px; 
+    border-radius: 5px; 
+    overflow-x: auto; 
+    font-size: 14px; 
+    min-height: 100px;
+    
+    /* ESTAS LÍNEAS ACTIVAN LOS INTROS Y EL AJUSTE DE TEXTO */
+    white-space: pre-wrap;       
+    word-wrap: break-word;
+    font-family: 'Courier New', Courier, monospace;
+}
