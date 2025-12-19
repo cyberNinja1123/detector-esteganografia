@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis de Esteganografía LSB</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Analizador de Imágenes</h1>
+        <p>Herramienta para detectar mensajes ocultos en archivos PNG/BMP.</p>
+        
+        <div class="upload-box">
+            <input type="file" id="upload" accept="image/png, image/bmp">
+            <label for="upload">Sube una imagen</label>
+        </div>
+
+        <canvas id="canvas"></canvas>
+
+        <div class="results">
+            <h3>Resultado del análisis:</h3>
+            <pre id="output">Selecciona una imagen para comenzar...</pre>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
