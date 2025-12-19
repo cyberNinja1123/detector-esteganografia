@@ -24,16 +24,26 @@ upload.addEventListener('change', (e) => {
 
 function extractLSB(data) {
     let bitString = "";
+    // Extraemos bits de R, G y B
     for (let i = 0; i < data.length; i += 4) {
-        bitString += (data[i] & 1);     // R
-        bitString += (data[i+1] & 1);   // G
-        bitString += (data[i+2] & 1);   // B
+        bitString += (data[i] & 1);     // Red
+        bitString += (data[i+1] & 1);   // Green
+        bitString += (data[i+2] & 1);   // Blue
     }
+
     let message = "";
     for (let i = 0; i < bitString.length; i += 8) {
         const charCode = parseInt(bitString.slice(i, i + 8), 2);
-        if (charCode >= 32 && charCode <= 126) message += String.fromCharCode(charCode);
-        if (message.length > 2000) break;
+        
+        // 32-126 son caracteres normales. 
+        // 10 es Salto de línea (\n) y 13 es Retorno de carro (\r)
+        if ((charCode >= 32 && charCode <= 126) || charCode === 10 || charCode === 13) {
+            message += String.fromCharCode(charCode);
+        }
+
+        // Límite de seguridad para no bloquear el navegador
+        if (message.length > 5000) break;
     }
-    return message || "No se encontró texto ASCII legible.";
+    
+    return message || "No se encontró contenido legible.";
 }
