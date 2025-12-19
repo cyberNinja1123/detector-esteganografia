@@ -24,26 +24,25 @@ upload.addEventListener('change', (e) => {
 
 function extractLSB(data) {
     let bitString = "";
-    // Extraemos bits de R, G y B
+    // Extraemos el bit menos significativo de los canales R, G y B
     for (let i = 0; i < data.length; i += 4) {
-        bitString += (data[i] & 1);     // Red
-        bitString += (data[i+1] & 1);   // Green
-        bitString += (data[i+2] & 1);   // Blue
+        bitString += (data[i] & 1);     // Rojo
+        bitString += (data[i+1] & 1);   // Verde
+        bitString += (data[i+2] & 1);   // Azul
     }
 
     let message = "";
     for (let i = 0; i < bitString.length; i += 8) {
-        const charCode = parseInt(bitString.slice(i, i + 8), 2);
+        const byte = bitString.slice(i, i + 8);
+        const charCode = parseInt(byte, 2);
         
-        // 32-126 son caracteres normales. 
-        // 10 es Salto de línea (\n) y 13 es Retorno de carro (\r)
         if ((charCode >= 32 && charCode <= 126) || charCode === 10 || charCode === 13) {
             message += String.fromCharCode(charCode);
         }
 
-        // Límite de seguridad para no bloquear el navegador
+        // Detener si el mensaje es demasiado largo (evita que la web se congele)
         if (message.length > 5000) break;
     }
     
-    return message || "No se encontró contenido legible.";
+    return message || "No se encontró texto legible o la imagen está vacía.";
 }
