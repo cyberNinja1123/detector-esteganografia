@@ -1,11 +1,3 @@
-Para que los saltos de línea se vean correctamente, solo tienes que añadir una línea a la regla pre de tu CSS.
-
-El elemento <pre> por defecto respeta los saltos de línea, pero si el mensaje es muy largo y no tiene espacios, se saldrá de la caja. Al añadir white-space: pre-wrap;, le dices que respete los saltos de línea originales y que, si una línea es demasiado larga para el ancho de la caja, la baje automáticamente.
-
-Aquí tienes el CSS corregido:
-
-CSS
-
 body { 
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
     background: #f0f2f5; 
